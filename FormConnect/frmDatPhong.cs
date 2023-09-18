@@ -203,8 +203,7 @@ namespace FormConnect
                 var lstPhong = _dpct.getAllByDatPhong(_idDatPhong);
                 foreach (var item in lstPhong)
                 {
-                    if(item.IDPHONG != null)
-                        _phong.UpdateStatus(item.IDPHONG, false);
+                    _phong.UpdateStatus(item.IDPHONG, false);
                 }
                 objMain.gControl.Gallery.Groups.Clear();
                 objMain.showRoom();
@@ -228,7 +227,7 @@ namespace FormConnect
         void loadDanhSach()
         {
             // gcDanhSach.DataSource = _datphong.getAll1();
-            _datphong = new DATPHONG(); 
+            _datphong = new DATPHONG();
             gcDanhSach.DataSource = _datphong.getAll(dtpFromDate.Value, dtpToDate.Value, _macty, _madvi);
             gvDanhSach.OptionsBehavior.Editable = false;
         }
@@ -555,10 +554,10 @@ namespace FormConnect
 
         private void gvDatPhong_RowCountChanged(object sender, EventArgs e)
         {
-            if(gvDatPhong.RowCount < _rowCountDP && _them == false)
+            if (gvDatPhong.RowCount < _rowCountDP && _them == false)
             {
                 _phong.UpdateStatus(_idPhong, false);
-                if(_idDatPhong != null && _idPhong != null)
+                if (_idDatPhong != null && _idPhong != null)
                 {
                     _dpct.delete(_idDatPhong, _idPhong);
                     _dpsp.deleteAllByPhong(_idDatPhong, _idPhong);
